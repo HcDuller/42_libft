@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 22:01:07 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/18 10:44:59 by hde-camp         ###   ########.fr       */
+/*   Created: 2021/05/18 12:59:00 by hde-camp          #+#    #+#             */
+/*   Updated: 2021/05/18 14:55:12 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
-{
-	char	*r;
-	int		i;
+#include	<stddef.h>
 
-	r = (char *)s;
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+{
+	char	*b;
+	char	*l;
+	size_t	i;	
+
+	if (!*little)
+		return ((char *)big);
+	b = (char *)big;
+	l = (char *)little;
 	i = 0;
-	while (*r)
+	while (*b && b < big + len)
 	{
-		i++;
-		r++;
-	}
-	while (i >= 0)
-	{
-		if (*r == c)
-			return (r);
-		r--;
-		i--;
-		if (i == 0 && !(*r == c))
-			return (0);
+		if (*b == *l)
+		{
+			while (b[i] == l[i] && b + i < big + len && b[i] && l[i])
+			{
+				i++;
+				if (!l[i])
+					return (b);
+			}
+		}
+		b++;
 	}
 	return (0);
 }
