@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 15:57:39 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/20 17:35:01 by hcduller         ###   ########.fr       */
+/*   Created: 2021/05/25 12:44:30 by hcduller          #+#    #+#             */
+/*   Updated: 2021/05/26 15:06:06 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	*ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	char	*p;
 
-	i = 0;
-	if (size == 0)
-		return (0);
-	while (i + 1 < size)
-	{		
-		dst[i] = src[i];
-		i++;
+	p = s;
+	while (n > 0)
+	{
+		*(p + --n) = (char)0;
 	}
-	dst[i] = '\0';
-	return (size);
 }

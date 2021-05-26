@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 15:57:39 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/20 17:35:01 by hcduller         ###   ########.fr       */
+/*   Created: 2021/05/25 17:50:08 by hcduller          #+#    #+#             */
+/*   Updated: 2021/05/26 15:05:37 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
+	size_t		i;
+	char		*d;
+	const char	*s;
 
-	i = 0;
-	if (size == 0)
-		return (0);
-	while (i + 1 < size)
-	{		
-		dst[i] = src[i];
-		i++;
+	d = dst;
+	s = src;
+	if (dst > src)
+	{
+		i = 0;
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
-	dst[i] = '\0';
-	return (size);
+	else
+	{
+		i = len;
+		while (i >= 1)
+		{
+			d[i - 1] = s[i - 1];
+			i--;
+		}
+	}
+	return (dst);
 }

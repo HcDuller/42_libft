@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 15:57:39 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/20 17:35:01 by hcduller         ###   ########.fr       */
+/*   Created: 2021/05/25 13:54:37 by hcduller          #+#    #+#             */
+/*   Updated: 2021/05/26 15:02:50 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	size_t	i;
+	char	*d;
+	char	*s;
+	int		i;
 
 	i = 0;
-	if (size == 0)
-		return (0);
-	while (i + 1 < size)
-	{		
-		dst[i] = src[i];
+	d = dst;
+	s = src;
+	while (i < n)
+	{
+		d[i] = s[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (size);
+	return (dst);
 }

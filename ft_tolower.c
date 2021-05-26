@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 15:57:39 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/20 17:35:01 by hcduller         ###   ########.fr       */
+/*   Created: 2021/05/24 16:52:48 by hcduller          #+#    #+#             */
+/*   Updated: 2021/05/26 15:09:26 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_tolower(int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (size == 0)
-		return (0);
-	while (i + 1 < size)
-	{		
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (size);
+	if (c >= -128 && c <= -2)
+		return (c + 256);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
 }
