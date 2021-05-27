@@ -6,9 +6,11 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 14:56:54 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/24 15:08:48 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:33:14 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include	"libft.h"
 
 int	ft_isalpha(int c)
 {

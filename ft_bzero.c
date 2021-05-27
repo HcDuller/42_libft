@@ -6,11 +6,11 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:44:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/26 15:06:06 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:33:08 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include	"libft.h"
 
 void	*ft_bzero(void *s, size_t n)
 {

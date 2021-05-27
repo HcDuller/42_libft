@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 13:21:33 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/17 14:35:13 by hde-camp         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:34:22 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<stddef.h>
+#include	"libft.h"
 
 size_t	ft_strlen(const char *s)
 {

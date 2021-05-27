@@ -6,9 +6,11 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:38:11 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/24 09:32:45 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:32:51 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include	"libft.h"
 
 int	breaking_character(char c)
 {

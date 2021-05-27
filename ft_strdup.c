@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 12:59:00 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/26 21:34:29 by hcduller         ###   ########.fr       */
+/*   Created: 2021/05/27 15:07:00 by hcduller          #+#    #+#             */
+/*   Updated: 2021/05/27 16:45:59 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strdup(const char *s1)
 {
-	char	*b;
-	char	*l;
-	size_t	i;	
+	size_t	l;
+	char	*ptr;
 
-	if (!*little)
-		return ((char *)big);
-	b = (char *)big;
-	l = (char *)little;
-	i = 0;
-	while (*b && b < big + len)
+	l = ft_strlen(s1);
+	ptr = ft_calloc(l + 1, sizeof(char));
+	if (ptr)
 	{
-		if (*b == *l)
+		ptr[l--] = 0;
+		while (l + 1 >= 1)
 		{
-			while (b[i] == l[i] && b + i < big + len && b[i] && l[i])
-			{
-				i++;
-				if (!l[i])
-					return (b);
-			}
+			 ptr[l] = s1[l];
+			 l--;
 		}
-		b++;
+		return (ptr);
 	}
 	return (0);
 }

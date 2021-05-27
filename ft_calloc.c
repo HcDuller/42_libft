@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 12:59:00 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/26 21:34:29 by hcduller         ###   ########.fr       */
+/*   Created: 2021/05/27 13:20:45 by hcduller          #+#    #+#             */
+/*   Updated: 2021/05/27 16:46:19 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*b;
-	char	*l;
-	size_t	i;	
+	void	*ptr;
 
-	if (!*little)
-		return ((char *)big);
-	b = (char *)big;
-	l = (char *)little;
-	i = 0;
-	while (*b && b < big + len)
+	ptr = malloc(count * size);
+	if (ptr)
 	{
-		if (*b == *l)
-		{
-			while (b[i] == l[i] && b + i < big + len && b[i] && l[i])
-			{
-				i++;
-				if (!l[i])
-					return (b);
-			}
-		}
-		b++;
+		ft_bzero(ptr, count * size);
+		return (ptr);
 	}
 	return (0);
 }

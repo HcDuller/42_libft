@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 09:27:13 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/17 16:40:50 by hde-camp         ###   ########.fr       */
+/*   Updated: 2021/05/27 14:27:49 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-static	size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] && s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+#include	"libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
