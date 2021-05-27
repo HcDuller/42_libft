@@ -6,13 +6,13 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:23:40 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/26 21:34:44 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/05/27 17:10:31 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-void	*ft_memccpy(void *restrict dst, const void *restrict src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	char	*s;
 	char	*d;
