@@ -6,17 +6,17 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:44:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/26 21:33:08 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/05/28 15:56:19 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	char	*p;
 
-	p = s;
+	p = (char *)s;
 	while (n > 0)
 	{
 		*(p + --n) = (char)0;

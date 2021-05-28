@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 14:58:24 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/26 21:33:24 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/05/28 15:56:51 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int		i;
+	size_t	i;
 	char	*p;
 
 	i = 0;

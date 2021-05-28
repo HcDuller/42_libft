@@ -35,7 +35,7 @@ SRC		=	ft_atoi.c \
 
 OBJS	=	${SRC:.c=.o}
 
-.PHONY : clean fclean
+.PHONY : clean fclean re
 
 $(NAME): ${OBJS}
 	${RC} ${OBJS} -o ${NAME}
@@ -47,3 +47,5 @@ clean:
 
 fclean: clean
 	${RM} ${NAME}
+
+re:	fclean all
