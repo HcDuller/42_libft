@@ -8,8 +8,7 @@ CFLAGS	= -Wall -Wextra -Werror
 
 NAME	= libft.a
 
-SRC		=	libft.h \
-			ft_atoi.c \
+SRC		=	ft_atoi.c \
 			ft_calloc.c \
 			ft_isalpha.c \
 			ft_isdigit.c \
