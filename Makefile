@@ -31,7 +31,10 @@ SRC		=	ft_atoi.c \
 			ft_strlcpy.c \
 			ft_strncmp.c \
 			ft_strrchr.c \
-			ft_toupper.c 
+			ft_toupper.c \
+			ft_substr.c \
+			ft_strjoin.c \
+			ft_strtrim.c
 
 OBJS	=	${SRC:.c=.o}
 
