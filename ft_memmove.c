@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:50:08 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/26 21:34:00 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/05/31 13:46:13 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	d = dst;
 	s = src;
-	if (dst > src)
+	if (dst < src)
 	{
 		i = 0;
 		while (i < len)

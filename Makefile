@@ -2,7 +2,7 @@ CC		= gcc
 
 RM		= rm -f
 
-AR		= rc ar
+AR		= ar rc
 
 CFLAGS	= -Wall -Wextra -Werror
 
@@ -38,7 +38,7 @@ OBJS	=	${SRC:.c=.o}
 .PHONY : clean fclean re
 
 $(NAME): ${OBJS}
-	${RC} ${OBJS} -o ${NAME}
+	${AR} ${NAME} ${OBJS}
 
 all: ${NAME}
 
