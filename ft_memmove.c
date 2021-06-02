@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:50:08 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/31 13:46:13 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/02 17:26:15 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			i++;
 		}
 	}
-	else
+	else if (dst > src)
 	{
 		i = len;
 		while (i >= 1)
