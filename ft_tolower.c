@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 16:52:48 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/26 21:34:54 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/02 18:18:17 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	ft_tolower(int c)
 {
-	if (c >= -128 && c <= -2)
-		return (c + 256);
 	if (c >= 65 && c <= 90)
-		return (c + 32);
+		return ((unsigned char)(c + 32));
 	return (c);
 }
