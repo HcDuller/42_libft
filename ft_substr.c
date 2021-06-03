@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 15:23:18 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/02 18:10:42 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 16:42:45 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 			*(ptr + i) = s[start + i];
 			i++;
 		}
+	}
+	else
+	{
+		free(ptr);
+		return (NULL);
 	}
 	return (ptr);
 }
