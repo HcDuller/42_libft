@@ -6,13 +6,13 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 14:51:42 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 15:09:29 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-static	void		splitter(char **a, char const *s, char c);
+static	void		matcher(char **a, char const *s, char c);
 static	void		free_all(char **a);
 static	size_t	occ_count(char const *s, char c);
 
@@ -27,12 +27,12 @@ char	**ft_split(char const *s, char c)
 		i = occ_count(s, c);
 		ar_ptr = malloc((sizeof (char *)) * (i + 1));
 		ar_ptr[i] = 0;
-		splitter(ar_ptr, s, c);
+		matcher(ar_ptr, s, c);
 	}
 	return (ar_ptr);
 }
 
-void	splitter(char **a, char const *s, char c)
+void	matcher(char **a, char const *s, char c)
 {
 	char	*pi;
 	char	*pf;
@@ -86,7 +86,10 @@ size_t	occ_count(char const *s, char c)
 
 static	void	free_all(char **a)
 {
-	while (*a)
-		free(*a++);
+	size_t i;
+
+	i = 0;
+	while (a[i])
+		free(a[i++]);
 	free(a);
 }
