@@ -6,13 +6,13 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 15:09:29 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 15:16:26 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-static	void		matcher(char **a, char const *s, char c);
+static	int		matcher(char **a, char const *s, char c);
 static	void		free_all(char **a);
 static	size_t	occ_count(char const *s, char c);
 
@@ -27,12 +27,16 @@ char	**ft_split(char const *s, char c)
 		i = occ_count(s, c);
 		ar_ptr = malloc((sizeof (char *)) * (i + 1));
 		ar_ptr[i] = 0;
-		matcher(ar_ptr, s, c);
+		if (!matcher(ar_ptr, s, c))
+		{
+			free(ar_ptr);
+			return (NULL);
+		}
 	}
 	return (ar_ptr);
 }
 
-void	matcher(char **a, char const *s, char c)
+int	matcher(char **a, char const *s, char c)
 {
 	char	*pi;
 	char	*pf;
@@ -52,7 +56,7 @@ void	matcher(char **a, char const *s, char c)
 				if (!a[i - 1])
 				{
 					free_all(a);
-					break ;
+					return (0);
 				}
 			}
 			while (*pf == c)
@@ -60,6 +64,7 @@ void	matcher(char **a, char const *s, char c)
 			pi = pf;
 		}
 	}
+	return (1);
 }
 
 size_t	occ_count(char const *s, char c)
@@ -86,10 +91,6 @@ size_t	occ_count(char const *s, char c)
 
 static	void	free_all(char **a)
 {
-	size_t i;
-
-	i = 0;
-	while (a[i])
-		free(a[i++]);
-	free(a);
+	while (*a)
+		free(a++);
 }
