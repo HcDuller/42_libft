@@ -6,13 +6,14 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 14:41:31 by hde-camp         ###   ########.fr       */
+/*   Updated: 2021/06/03 14:51:42 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
 static	void		splitter(char **a, char const *s, char c);
+static	void		free_all(char **a);
 static	size_t	occ_count(char const *s, char c);
 
 char	**ft_split(char const *s, char c)
@@ -25,8 +26,8 @@ char	**ft_split(char const *s, char c)
 	{
 		i = occ_count(s, c);
 		ar_ptr = malloc((sizeof (char *)) * (i + 1));
-		splitter(ar_ptr, s, c);
 		ar_ptr[i] = 0;
+		splitter(ar_ptr, s, c);
 	}
 	return (ar_ptr);
 }
@@ -48,6 +49,11 @@ void	splitter(char **a, char const *s, char c)
 			if (pf - pi > 0 && (unsigned char)*pi != (unsigned char)c)
 			{
 				a[i++] = ft_substr(pi, 0, (pf - pi));
+				if (!a[i - 1])
+				{
+					free_all(a);
+					break ;
+				}
 			}
 			while (*pf == c)
 				pf++;
@@ -76,4 +82,11 @@ size_t	occ_count(char const *s, char c)
 		}
 	}
 	return (i);
+}
+
+static	void	free_all(char **a)
+{
+	while (*a)
+		free(*a++);
+	free(a);
 }
