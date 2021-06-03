@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:39:01 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/02 15:42:20 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 17:28:37 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;
 
+	if (!s)
+		return ;
 	i = ft_strlen(s);
 	write(fd, s, i);
 }

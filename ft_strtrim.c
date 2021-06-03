@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 20:11:51 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 14:17:52 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 17:15:14 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i[3];
 
+	if (!s1 || !set)
+		return (NULL);
 	i[0] = 0;
 	i[2] = ft_strlen(s1);
 	i[1] = i[2] - 1;

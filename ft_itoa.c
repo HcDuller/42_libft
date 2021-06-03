@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 18:50:28 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/01 20:37:07 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 17:26:59 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*ft_itoa(int n)
 	len = r_len(n);
 	i = len;
 	p = ft_calloc(i + 1, 1);
+	if (!p)
+		return (NULL);
 	while (i > 0)
 	{
 		p[--i] = mod(n % 10) + 48;
