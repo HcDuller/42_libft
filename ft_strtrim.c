@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 20:11:51 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 14:16:23 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 14:17:52 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (i[1] > i[0])
 		return (ft_substr(s1, i[0], i[1] - i[0] + 1));
 	else
-		return ft_calloc(1, 1);
+		return (ft_calloc(1, 1));
 }
 
 static int	match_chrset(char c, char *set)
