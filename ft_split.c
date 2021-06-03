@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 14:37:40 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 14:41:31 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 
 	ar_ptr = NULL;
-	if (s != NULL && c != NULL)
+	if (s != NULL)
 	{
 		i = occ_count(s, c);
 		ar_ptr = malloc((sizeof (char *)) * (i + 1));
