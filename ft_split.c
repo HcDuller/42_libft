@@ -6,14 +6,14 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 15:16:26 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 16:37:58 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
 static	int		matcher(char **a, char const *s, char c);
-static	void		free_all(char **a);
+static	int		free_all(char **a);
 static	size_t	occ_count(char const *s, char c);
 
 char	**ft_split(char const *s, char c)
@@ -45,19 +45,15 @@ int	matcher(char **a, char const *s, char c)
 	i = 0;
 	pf = (char *)s;
 	pi = pf;
-	while (*pf)
+	while (*pf++)
 	{
-		pf++;
 		if (*pf == c || !*pf)
 		{
 			if (pf - pi > 0 && (unsigned char)*pi != (unsigned char)c)
 			{
 				a[i++] = ft_substr(pi, 0, (pf - pi));
 				if (!a[i - 1])
-				{
-					free_all(a);
-					return (0);
-				}
+					return (free_all(a));
 			}
 			while (*pf == c)
 				pf++;
@@ -89,8 +85,9 @@ size_t	occ_count(char const *s, char c)
 	return (i);
 }
 
-static	void	free_all(char **a)
+static	int	free_all(char **a)
 {
 	while (*a)
 		free(a++);
+	return (0);
 }
