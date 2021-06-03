@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 15:23:18 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 16:49:51 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 16:53:51 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	sl = ft_strlen(s);
-	if(sl < len)
+	if (sl < len)
 		nl = sl;
 	else
 		nl = len;
