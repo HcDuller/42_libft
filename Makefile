@@ -8,6 +8,14 @@ CFLAGS	= -Wall -Wextra -Werror
 
 NAME	= libft.a
 
+BSRC	=	ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
+			ft_lstclear.c
+
 SRC		=	ft_atoi.c \
 			ft_calloc.c \
 			ft_isalpha.c \
@@ -45,17 +53,22 @@ SRC		=	ft_atoi.c \
 
 OBJS	=	${SRC:.c=.o}
 
+BOBJS	=	${BSRC:.c=.o}
+
 .PHONY : clean fclean re
 
-$(NAME): ${OBJS}
+${NAME}: ${OBJS}
 	${AR} ${NAME} ${OBJS}
 
 all: ${NAME}
 
+bonus: ${NAME} ${BOBJS}
+	${AR} ${NAME} ${BOBJS}
+
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} ${BOBJS}
 
 fclean: clean
-	${RM} ${NAME}
+	${RM} ${NAME} 
 
 re:	fclean all
