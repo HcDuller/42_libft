@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:02:41 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/07 17:35:39 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/07 17:36:48 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	l = lst;
 	while (lst)
 	{
-		f(l);
+		f(l->content);
 		l = l->next;
 	}
 }
