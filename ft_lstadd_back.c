@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:07:21 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/04 16:59:58 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/07 15:21:38 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	p = *lst;
 	while (p)
-	{
 		p = p->next;
-	}
 	p->next = new;
 	while (*lst)
-	{
 		lst++;
-	}
 	*lst = new;
 }
