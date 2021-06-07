@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:39:39 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/07 15:33:23 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/07 15:34:28 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		free(p);
 		p = a;
 	}
-	lst = NULL;
+	*lst = NULL;
 }
