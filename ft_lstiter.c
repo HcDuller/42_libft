@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:02:41 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/07 17:38:28 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/07 17:54:09 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	if (!lst || !f)
 		return ;
 	l = lst;
-	while (lst)
+	while (l)
 	{
 		f(l->content);
 		l = l->next;
