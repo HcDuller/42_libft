@@ -6,60 +6,37 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:25:05 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/07 14:58:06 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/07 19:34:45 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	ft_mapper(t_list **al, t_list *or, void *(*f)(void *), int len);
-static	void	freer(t_list **al);
-
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*p;
-	t_list	**t;
+	t_list	*r[3];
 	int		l;
+	int		i;
 
 	if (!lst || !f || !del)
 		return (NULL);
 	l = ft_lstsize(lst);
-	t = (t_list **)ft_calloc(l + 1, sizeof (void *));
-	if (t)
-	{
-		if (!ft_mapper(t, lst, f, l))
-		{
-			freer(t);
-			return (NULL);
-		}
-		p = *t;
-		free(t);
-		return (p);
-	}
-	return (NULL);
-}
-
-int	ft_mapper(t_list **al, t_list *or, void *(*f)(void *), int len)
-{
-	int	i;
-
 	i = 0;
-	while (i < len)
+	while (i < l)
 	{
-		al[i] = ft_lstnew(f(or->content));
-		if (!al[i])
-			return (0);
-		if (i > 0)
-			al[i - 1]->next = al[i];
+		if (i == 0)
+		{
+			r[0] = ft_lstnew(f(lst->content));
+			r[1] = r[0];
+			r[2] = lst->next;
+		}
+		else
+		{
+			r[1]->next = ft_lstnew(f(r[2]->content));
+			r[1] = r[1]->next;
+			r[2] = r[2]->next;
+		}
 		i++;
-		or = or->next;
 	}
-	return (1);
-}
-
-void	freer(t_list **al)
-{
-	while (*al)
-		free(*al++);
-	free(al);
+	return (r[0]);
 }
