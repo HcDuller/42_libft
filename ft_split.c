@@ -6,42 +6,62 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/08 18:14:12 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/03 17:24:12 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
+static	int		matcher(char **a, char const *s, char c);
+static	int		free_all(char **a);
 static	size_t	occ_count(char const *s, char c);
-static	size_t	cut_and_move(char const *s, char c, char **aptr, size_t occ);
-static	void		free_all(char **a);
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	size;
+	char	**ar_ptr;
 	size_t	i;
-	size_t	s_index;
-	char	**aptr;
 
-	aptr = NULL;
+	ar_ptr = NULL;
 	if (s)
 	{
-		size = occ_count(s, c);
-		i = 0;
-		s_index = 0;
-		aptr = (char **)ft_calloc(size + 1, sizeof (char *));
-		while (i < size)
+		i = occ_count(s, c);
+		ar_ptr = (char **)ft_calloc(i + 1, sizeof (char *));
+		if (!ar_ptr)
+			return (NULL);
+		if (!matcher(ar_ptr, s, c))
 		{
-			s_index += cut_and_move(&s[s_index], c, aptr, i);
-			if (!aptr[i])
-			{
-				free_all(aptr);
-				return (NULL);
-			}	
-			i++;
+			free(ar_ptr);
+			return (NULL);
 		}
 	}
-	return (aptr);
+	return (ar_ptr);
+}
+
+int	matcher(char **a, char const *s, char c)
+{
+	char	*pi;
+	char	*pf;
+	size_t	i;
+
+	i = 0;
+	pf = (char *)s;
+	pi = pf;
+	while (*pf++)
+	{
+		if (*pf == c || !*pf)
+		{
+			if (pf - pi > 0 && (unsigned char)*pi != (unsigned char)c)
+			{
+				a[i++] = ft_substr(pi, 0, (pf - pi));
+				if (!a[i - 1])
+					return (free_all(a));
+			}
+			while (*pf == c)
+				pf++;
+			pi = pf;
+		}
+	}
+	return (1);
 }
 
 size_t	occ_count(char const *s, char c)
@@ -66,29 +86,9 @@ size_t	occ_count(char const *s, char c)
 	return (i);
 }
 
-size_t	cut_and_move(char const *s, char c, char **aptr, size_t occ)
+static	int	free_all(char **a)
 {
-	size_t	i;
-	size_t	start;
-	size_t	end;
-
-	i = 0;
-	while ((unsigned char)s[i] == (unsigned char)c)
-		i++;
-	start = i;
-	end = i;
-	while ((unsigned char)s[i] != (unsigned char)c)
-		end = i++;
-	aptr[occ] = ft_substr(s, start, (end - start + 1));
-	return (i);
-}
-
-void	free_all(char **a)
-{
-	size_t	i;
-
-	i = 0;
-	while (a[i])
-		free(a[i++]);
-	free(a);
+	while (*a)
+		free(a++);
+	return (0);
 }
