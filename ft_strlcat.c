@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 09:27:13 by hde-camp          #+#    #+#             */
-/*   Updated: 2021/05/27 14:27:49 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/08 12:11:21 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	sc = ft_strlen(src);
 	sd = ft_strlen(dst);
 	i = 0;
-	if (sc + size > sc + sd)
+	if (size > sd)
 		sc = sc + sd;
 	else
 		sc = sc + size;
