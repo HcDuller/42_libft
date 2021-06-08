@@ -6,15 +6,14 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 17:24:12 by hde-camp         ###   ########.fr       */
+/*   Updated: 2021/06/08 20:00:30 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-static	int		matcher(char **a, char const *s, char c);
-static	int		free_all(char **a);
 static	size_t	occ_count(char const *s, char c);
+static	void	splitter(char *s, char c,char **aptr);
 
 char	**ft_split(char const *s, char c)
 {
@@ -28,67 +27,51 @@ char	**ft_split(char const *s, char c)
 		ar_ptr = (char **)ft_calloc(i + 1, sizeof (char *));
 		if (!ar_ptr)
 			return (NULL);
-		if (!matcher(ar_ptr, s, c))
-		{
-			free(ar_ptr);
-			return (NULL);
-		}
+		splitter((char *)s, c, ar_ptr);
 	}
 	return (ar_ptr);
 }
 
-int	matcher(char **a, char const *s, char c)
-{
-	char	*pi;
-	char	*pf;
-	size_t	i;
-
-	i = 0;
-	pf = (char *)s;
-	pi = pf;
-	while (*pf++)
-	{
-		if (*pf == c || !*pf)
-		{
-			if (pf - pi > 0 && (unsigned char)*pi != (unsigned char)c)
-			{
-				a[i++] = ft_substr(pi, 0, (pf - pi));
-				if (!a[i - 1])
-					return (free_all(a));
-			}
-			while (*pf == c)
-				pf++;
-			pi = pf;
-		}
-	}
-	return (1);
-}
-
 size_t	occ_count(char const *s, char c)
 {
-	char	*pi;
 	char	*pf;
 	size_t	i;
 
-	pi = (char *)s;
-	pf = pi;
+	pf = (char *)s;
 	i = 0;
 	while (*pf)
 	{
-		pf++;
-		if (*pf == c || !*pf)
+		if (*pf != c)
 		{
-			if (pf - pi > 1)
-				i++;
-			pi = pf;
+			while (*pf != c && *pf)
+				pf++;
+			i++;
 		}
+		if(*pf)
+			pf++;
 	}
 	return (i);
 }
 
-static	int	free_all(char **a)
+void	splitter(char *s, char c,char **aptr)
 {
-	while (*a)
-		free(a++);
-	return (0);
+	size_t i;
+	size_t n;
+
+	n = 0;
+	while (*s)
+	{
+		i = 0;
+		if (*s != c)
+		{
+			while (s[i] != c && s[i])
+			{				
+				i++;
+			}
+			aptr[n++] = ft_substr(s,0,i);
+			s += i - 1;
+		}
+		if (*s)
+			s++;
+	}
 }
