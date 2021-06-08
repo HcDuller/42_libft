@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:23:40 by hcduller          #+#    #+#             */
-/*   Updated: 2021/05/28 15:26:32 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/07 22:55:46 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	while (i < n)
 	{
 		d[i] = s[i];
-		i++;
-		if ((unsigned char)s[i] == (unsigned char)c)
-		{
-			d[i] = s[i];
-			i++;
+		if ((unsigned char)s[i++] == (unsigned char)c)
 			return (d + i);
-		}
 	}
 	return (0);
 }
