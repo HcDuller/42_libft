@@ -6,62 +6,36 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/03 17:24:12 by hde-camp         ###   ########.fr       */
+/*   Updated: 2021/06/08 17:53:24 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-static	int		matcher(char **a, char const *s, char c);
-static	int		free_all(char **a);
 static	size_t	occ_count(char const *s, char c);
+static	size_t	cut_and_move(char const *s, char c, char **add_here, size_t occ);
 
 char	**ft_split(char const *s, char c)
 {
-	char	**ar_ptr;
+	size_t	size;
 	size_t	i;
+	size_t	s_index;
+	char	**aptr;
 
-	ar_ptr = NULL;
+	aptr = NULL;
 	if (s)
 	{
-		i = occ_count(s, c);
-		ar_ptr = (char **)ft_calloc(i + 1, sizeof (char *));
-		if (!ar_ptr)
-			return (NULL);
-		if (!matcher(ar_ptr, s, c))
+		size = occ_count(s, c);
+		i = 0;
+		s_index = 0;
+		aptr = (char **)ft_calloc(size + 1, sizeof (char *));
+		while (i < size)
 		{
-			free(ar_ptr);
-			return (NULL);
+			s_index += cut_and_move(&s[s_index], c, aptr, i);
+			i++;
 		}
 	}
-	return (ar_ptr);
-}
-
-int	matcher(char **a, char const *s, char c)
-{
-	char	*pi;
-	char	*pf;
-	size_t	i;
-
-	i = 0;
-	pf = (char *)s;
-	pi = pf;
-	while (*pf++)
-	{
-		if (*pf == c || !*pf)
-		{
-			if (pf - pi > 0 && (unsigned char)*pi != (unsigned char)c)
-			{
-				a[i++] = ft_substr(pi, 0, (pf - pi));
-				if (!a[i - 1])
-					return (free_all(a));
-			}
-			while (*pf == c)
-				pf++;
-			pi = pf;
-		}
-	}
-	return (1);
+	return (aptr);
 }
 
 size_t	occ_count(char const *s, char c)
@@ -86,9 +60,19 @@ size_t	occ_count(char const *s, char c)
 	return (i);
 }
 
-static	int	free_all(char **a)
+size_t	cut_and_move(char const *s, char c, char **add_here, size_t occ)
 {
-	while (*a)
-		free(a++);
-	return (0);
+	size_t	i;
+	size_t	start;
+	size_t	end;
+
+	i = 0;
+	while ((unsigned char)s[i] == (unsigned char)c)
+		i++;
+	start = i;
+	end = i;
+	while ((unsigned char)s[i] != (unsigned char)c)
+		end = i++;
+	add_here[occ] = ft_substr(s, start, (end - start + 1));
+	return (i);
 }
