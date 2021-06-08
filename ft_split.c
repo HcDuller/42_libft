@@ -6,14 +6,15 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/08 17:53:24 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/08 18:14:12 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
 static	size_t	occ_count(char const *s, char c);
-static	size_t	cut_and_move(char const *s, char c, char **add_here, size_t occ);
+static	size_t	cut_and_move(char const *s, char c, char **aptr, size_t occ);
+static	void		free_all(char **a);
 
 char	**ft_split(char const *s, char c)
 {
@@ -32,6 +33,11 @@ char	**ft_split(char const *s, char c)
 		while (i < size)
 		{
 			s_index += cut_and_move(&s[s_index], c, aptr, i);
+			if (!aptr[i])
+			{
+				free_all(aptr);
+				return (NULL);
+			}	
 			i++;
 		}
 	}
@@ -60,7 +66,7 @@ size_t	occ_count(char const *s, char c)
 	return (i);
 }
 
-size_t	cut_and_move(char const *s, char c, char **add_here, size_t occ)
+size_t	cut_and_move(char const *s, char c, char **aptr, size_t occ)
 {
 	size_t	i;
 	size_t	start;
@@ -73,6 +79,16 @@ size_t	cut_and_move(char const *s, char c, char **add_here, size_t occ)
 	end = i;
 	while ((unsigned char)s[i] != (unsigned char)c)
 		end = i++;
-	add_here[occ] = ft_substr(s, start, (end - start + 1));
+	aptr[occ] = ft_substr(s, start, (end - start + 1));
 	return (i);
+}
+
+void	free_all(char **a)
+{
+	size_t	i;
+
+	i = 0;
+	while (a[i])
+		free(a[i++]);
+	free(a);
 }
