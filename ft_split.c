@@ -6,14 +6,14 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 22:08:30 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/08 20:00:30 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/09 11:31:32 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
 static	size_t	occ_count(char const *s, char c);
-static	void	splitter(char *s, char c,char **aptr);
+static	void		splitter(char *s, char c, char **aptr);
 
 char	**ft_split(char const *s, char c)
 {
@@ -47,16 +47,16 @@ size_t	occ_count(char const *s, char c)
 				pf++;
 			i++;
 		}
-		if(*pf)
+		if (*pf)
 			pf++;
 	}
 	return (i);
 }
 
-void	splitter(char *s, char c,char **aptr)
+void	splitter(char *s, char c, char **aptr)
 {
-	size_t i;
-	size_t n;
+	size_t	i;
+	size_t	n;
 
 	n = 0;
 	while (*s)
@@ -68,7 +68,7 @@ void	splitter(char *s, char c,char **aptr)
 			{				
 				i++;
 			}
-			aptr[n++] = ft_substr(s,0,i);
+			aptr[n++] = ft_substr(s, 0, i);
 			s += i - 1;
 		}
 		if (*s)
