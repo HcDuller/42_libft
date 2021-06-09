@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:25:05 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/08 21:47:12 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/08 21:49:36 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	r[3] = NULL;
 	while (r[0])
 	{
-		r[2] = ft_lstnew(f(r[0]->content));
+		r[2] = allocator(r[0], f);
 		if (!r[2])
 		{
 			clean_all(r[0], del);
@@ -47,6 +47,7 @@ t_list	*allocator(t_list *src, void *(*f)(void *))
 {
 	t_list	*p;
 
+	p = NULL;
 	if (f)
 		p = ft_lstnew(f(src->content));
 	return (p);
