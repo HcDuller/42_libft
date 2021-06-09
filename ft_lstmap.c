@@ -6,7 +6,7 @@
 /*   By: hcduller <hcduller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 17:25:05 by hcduller          #+#    #+#             */
-/*   Updated: 2021/06/07 20:12:26 by hcduller         ###   ########.fr       */
+/*   Updated: 2021/06/08 21:47:12 by hcduller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,39 @@ static	void		clean_all(t_list *fl, void (*del)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*r[3];
-	int		l;
-	int		i;
+	t_list	*r[4];
 
 	if (!lst)
 		return (NULL);
-	l = ft_lstsize(lst);
-	i = 1;
-	r[0] = allocator(lst, f);
-	r[1] = r[0];
-	r[2] = lst->next;
-	while (i < l)
+	r[0] = lst;
+	r[1] = NULL;
+	r[2] = NULL;
+	r[3] = NULL;
+	while (r[0])
 	{
-		if (r[1])
-			r[1]->next = allocator(r[2]->content, f);
-		else
+		r[2] = ft_lstnew(f(r[0]->content));
+		if (!r[2])
 		{
 			clean_all(r[0], del);
 			return (NULL);
 		}
-		r[1] = r[1]->next;
-		r[2] = r[2]->next;
-		i++;
+		if (r[1])
+			r[1]->next = r[2];
+		else
+			r[3] = r[2];
+		r[1] = r[2];
+		r[0] = r[0]->next;
 	}
-	return (r[0]);
+	return (r[3]);
 }
 
 t_list	*allocator(t_list *src, void *(*f)(void *))
 {
+	t_list	*p;
+
 	if (f)
-		return (ft_lstnew(f(src->content)));
-	return (ft_lstnew(src->content));
+		p = ft_lstnew(f(src->content));
+	return (p);
 }
 
 void	clean_all(t_list *fl, void (*del)(void *))
