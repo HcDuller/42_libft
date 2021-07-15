@@ -16,8 +16,8 @@ BSRC	=	ft_lstnew.c \
 			ft_lstdelone.c \
 			ft_lstclear.c \
 			ft_lstiter.c \
-			ft_lstmap.c
-
+			ft_lstmap.c 
+			
 SRC		=	ft_atoi.c \
 			ft_calloc.c \
 			ft_isalpha.c \
@@ -56,6 +56,8 @@ SRC		=	ft_atoi.c \
 OBJS	=	${SRC:.c=.o}
 
 BOBJS	=	${BSRC:.c=.o}
+
+BEXTRAS	=	${EXTRAS:.c=.o}
 
 .PHONY : clean fclean re
 
