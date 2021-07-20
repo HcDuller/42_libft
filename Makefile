@@ -1,6 +1,6 @@
 CC		= clang
 
-RM		= rm -f
+RM		= rm -rf
 
 AR		= ar rc
 
@@ -53,7 +53,7 @@ SRC		=	ft_atoi.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c
 
-OBJS	=	${SRC:.c=.o}
+OBJS	=	$(addprefix build/,${SRC:.c=.o})
 
 BOBJS	=	${BSRC:.c=.o}
 
@@ -64,13 +64,17 @@ BEXTRAS	=	${EXTRAS:.c=.o}
 ${NAME}: ${OBJS}
 	${AR} ${NAME} ${OBJS}
 
+${OBJS}: ${SRC}
+	@mkdir -p build
+	${CC} ${CFLAGS} -c $< -o $@
+
 all: ${NAME}
 
 bonus: ${NAME} ${BOBJS}
 	${AR} ${NAME} ${BOBJS}
 
 clean:
-	${RM} ${OBJS} ${BOBJS}
+	${RM} ${OBJS} ${BOBJS} build
 
 fclean: clean
 	${RM} ${NAME} 
