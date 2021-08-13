@@ -1,6 +1,6 @@
 CC		= clang
 
-RM		= rm -f
+RM		= rm -rf
 
 AR		= ar rc
 
@@ -16,8 +16,8 @@ BSRC	=	ft_lstnew.c \
 			ft_lstdelone.c \
 			ft_lstclear.c \
 			ft_lstiter.c \
-			ft_lstmap.c
-
+			ft_lstmap.c 
+			
 SRC		=	ft_atoi.c \
 			ft_calloc.c \
 			ft_isalpha.c \
@@ -53,14 +53,20 @@ SRC		=	ft_atoi.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c
 
-OBJS	=	${SRC:.c=.o}
+OBJS	=	$(addprefix build/,${SRC:.c=.o})
 
 BOBJS	=	${BSRC:.c=.o}
+
+BEXTRAS	=	${EXTRAS:.c=.o}
 
 .PHONY : clean fclean re
 
 ${NAME}: ${OBJS}
 	${AR} ${NAME} ${OBJS}
+
+${OBJS}: ${SRC}
+	@mkdir -p build
+	${CC} ${CFLAGS} -c $< -o $@
 
 all: ${NAME}
 
@@ -68,7 +74,7 @@ bonus: ${NAME} ${BOBJS}
 	${AR} ${NAME} ${BOBJS}
 
 clean:
-	${RM} ${OBJS} ${BOBJS}
+	${RM} ${OBJS} ${BOBJS} build
 
 fclean: clean
 	${RM} ${NAME} 
