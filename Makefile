@@ -57,13 +57,12 @@ RAW	=		ft_atoi.c \
 SRC		=	$(addprefix $(SRC_DIR)/,$(RAW))
 OBJS	=	$(addprefix $(OBJ_DIR)/,$(RAW:.c=.o))
 
-.PHONY: clean fclean re
+.PHONY: securedir clean fclean re
 
 $(NAME):	$(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-$(OBJS):	$(SRC)
-	@mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c securedir
 	$(CC) $(CFLAGS) -c $< -I./ -o $@
 
 all: $(NAME)
@@ -75,3 +74,6 @@ fclean:
 	$(RM) $(OBJ_DIR) $(NAME)
 
 re:	fclean all
+
+securedir:
+	@mkdir -p $(OBJ_DIR)
