@@ -3,3 +3,4 @@ libft.h.gch
 *.out
 *.so
 *.a
+.vscode/**
