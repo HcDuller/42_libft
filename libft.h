@@ -90,4 +90,20 @@ void	ft_dl_addfirst(t_dl_list *item, t_dl_list *new);
  * @param new Item to be added.
  */
 void	ft_dl_addlast(t_dl_list *item, t_dl_list *new);
+/**
+ * @brief Add an item after the item pointed by lst.
+ * after execution, lst will point to new
+ * 
+ * @param lst Pointer to an item in the list
+ * @param new Item to be added
+ */
+void	ft_dl_addback(t_dl_list **lst, t_dl_list *new);
+/**
+ * @brief Add an item before the item pointed by lst.
+ * after execution, lst will point to new
+ * 
+ * @param lst Pointer to an item in the list
+ * @param new Item to be added
+ */
+void	ft_dl_addfront(t_dl_list **lst, t_dl_list *new);
 #endif
