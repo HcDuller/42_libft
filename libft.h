@@ -78,4 +78,10 @@ t_dl_list	*ft_dl_lstnew(void *content);
  * @param del function that receives item content do destroy it.
  */
 void	ft_dl_lstdestroy(t_dl_list *item, void (*del)(void*));
+/**
+ * @brief Add an item to the start of a double linked list.
+ * @param item A pointer to any item of the list.
+ * @param new Item to be added.
+ */
+void	ft_dl_addfirst(t_dl_list *item, t_dl_list *new);
 #endif
