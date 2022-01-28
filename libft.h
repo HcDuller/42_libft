@@ -71,5 +71,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
  * @return t_dl_list* returns the item.
  */
 t_dl_list	*ft_dl_lstnew(void *content);
-
+/**
+ * @brief Destroy a single list item.
+ * This already link next to previous itens.
+ * @param item item to be destroyed
+ * @param del function that receives item content do destroy it.
+ */
+void	ft_dl_lstdestroy(t_dl_list *item, void (*del)(void*));
 #endif

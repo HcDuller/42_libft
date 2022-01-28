@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_dl_lstdestroy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 15:04:48 by hde-camp          #+#    #+#             */
-/*   Updated: 2022/01/28 17:45:33 by hde-camp         ###   ########.fr       */
+/*   Created: 2021/06/04 16:30:53 by hcduller          #+#    #+#             */
+/*   Updated: 2022/01/28 17:41:59 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_isspace(char c)
+#include "libft.h"
+
+void	ft_dl_lstdestroy(t_dl_list *item, void (*del)(void*))
 {
-	if (((int)c >= 9 && (int)c <= 13) || (int)c == 32)
-		return (1);
-	return (0);
+	if (!item)
+		return ;
+	if (item->prev)
+	{
+		if (item->next)
+		{
+			item->prev->next = item->next;
+			item->next->prev = item->prev;
+		}
+		else
+			item->prev->next = NULL;
+	}
+	else
+	{
+		if (item->next)
+			item->next->prev = NULL;
+	}
+	if (del)
+		del(item->content);
+	free(item);
 }
