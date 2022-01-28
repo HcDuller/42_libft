@@ -84,4 +84,10 @@ void	ft_dl_lstdestroy(t_dl_list *item, void (*del)(void*));
  * @param new Item to be added.
  */
 void	ft_dl_addfirst(t_dl_list *item, t_dl_list *new);
+/**
+ * @brief Add an item to the end of a double linked list.
+ * @param item A pointer to any item of the list.
+ * @param new Item to be added.
+ */
+void	ft_dl_addlast(t_dl_list *item, t_dl_list *new);
 #endif
