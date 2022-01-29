@@ -75,7 +75,7 @@ t_dl_list	*ft_dl_lstnew(void *content);
  * @brief Destroy a single list item.
  * This already link next to previous itens.
  * @param item item to be destroyed
- * @param del function that receives item content do destroy it.
+ * @param del Cleanup function for item.
  */
 void	ft_dl_lstdestroy(t_dl_list *item, void (*del)(void*));
 /**
@@ -106,4 +106,18 @@ void	ft_dl_addback(t_dl_list **lst, t_dl_list *new);
  * @param new Item to be added
  */
 void	ft_dl_addfront(t_dl_list **lst, t_dl_list *new);
+/**
+ * @brief Remove one item from list, replacing (*lst)
+ * with the first available option within next, prev or NULL.
+ * @param lst Any pointer to item pointer in the list
+ * @param del Cleanup function used on each item.
+ */
+void	ft_dl_removeone(t_dl_list **lst, void (*del)(void*));
+/**
+ * @brief Destroy an entire t_dl_list.
+ * 
+ * @param item Any item in the list.
+ * @param del Cleanup function for item.
+ */
+void	ft_dl_destroyall(t_dl_list *item, void (*del)(void*));
 #endif

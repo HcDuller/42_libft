@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_dl_destroyall.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/27 15:07:00 by hcduller          #+#    #+#             */
-/*   Updated: 2022/01/29 15:08:45 by hde-camp         ###   ########.fr       */
+/*   Created: 2022/01/29 13:48:44 by hde-camp          #+#    #+#             */
+/*   Updated: 2022/01/29 15:09:32 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_dl_destroyall(t_dl_list *item, void (*del)(void*))
 {
-	size_t	l;
-	char	*ptr;
+	void	*fnc;
 
-	l = ft_strlen(s1);
-	ptr = ft_calloc(l + 1, sizeof(char));
-	if (ptr)
-	{
-		ptr[l--] = 0;
-		while (l + 1 >= 1)
-		{
-			ptr[l] = s1[l];
-			l--;
-		}
-		return (ptr);
-	}
-	return (0);
+	if (!(item))
+		return ;
+	if (del)
+		fnc = del;
+	else
+		fnc = NULL;
+	while (item)
+		ft_dl_removeone(&item, fnc);
 }
