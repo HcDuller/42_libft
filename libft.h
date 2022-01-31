@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:50:52 by hde-camp          #+#    #+#             */
-/*   Updated: 2022/01/31 18:52:26 by hde-camp         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:18:36 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
+/**
+ * @brief Compare two strings.
+ * 
+ * @param s1 string 1.
+ * @param s2 string 2.
+ * @return an integer less than, equal to, or greater than zero if s1 is found, 
+ * respectively, to be less than, to match, or be greater than s2.
+ */
+int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_atoi(const char *nptr);
 int			ft_isalpha(int c);
