@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:35:01 by hde-camp          #+#    #+#             */
-/*   Updated: 2022/02/05 12:39:51 by hde-camp         ###   ########.fr       */
+/*   Updated: 2022/02/05 12:52:49 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	ft_chrinstr(char c, const char *str)
 	if (!(c && str))
 		return (0);
 	set = str;
-	while(*set)
+	while (*set)
 	{
-		if (c == *set);
+		if (c == *set)
 			return ((int) c);
 		set++;
 	}

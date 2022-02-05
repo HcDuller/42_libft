@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 18:50:52 by hde-camp          #+#    #+#             */
-/*   Updated: 2022/02/05 12:51:31 by hde-camp         ###   ########.fr       */
+/*   Updated: 2022/02/05 12:53:40 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,8 @@ void		ft_dl_removeone(t_dl_list **lst, void (*del)(void*));
  * 
  * @param c A character to search for.
  * @param str A string to iterate over.
- * @return Returns the character found (it's value as an integer), if no character is found, return zero.
+ * @return Returns the character found (it's value as an integer),
+ *  if no character is found, return zero.
  */
-int	ft_chrinstr(char c, const char *str);
+int			ft_chrinstr(char c, const char *str);
 #endif
