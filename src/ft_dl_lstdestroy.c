@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/04 16:30:53 by hcduller          #+#    #+#             */
-/*   Updated: 2022/02/14 16:24:37 by hde-camp         ###   ########.fr       */
+/*   Updated: 2022/02/14 17:51:45 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	ft_dl_lstdestroy(t_dl_list *item, void (*del)(void*))
 			item->next->prev = NULL;
 	}
 	if (del)
-		del((void *)&item->content);
+		del((void *)item->content);
 	free(item);
 }
