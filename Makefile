@@ -46,6 +46,7 @@ RAW			=	ft_atoi.c \
 				ft_strlcpy.c \
 				ft_strlen.c \
 				ft_strmapi.c \
+				ft_strcmp.c \
 				ft_strncmp.c \
 				ft_strnstr.c \
 				ft_strrchr.c \
